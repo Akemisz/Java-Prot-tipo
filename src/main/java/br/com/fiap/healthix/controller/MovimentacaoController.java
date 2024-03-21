@@ -1,0 +1,28 @@
+package br.com.fiap.healthix.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.fiap.healthix.model.Movimentacao;
+import br.com.fiap.healthix.repository.MovimentacaoRepository;
+import jakarta.validation.Valid;
+
+
+@RestController
+@RequestMapping("movimentacao")
+public class MovimentacaoController {
+    
+    @Autowired
+    MovimentacaoRepository repository;
+
+    @GetMapping
+    public Movimentacao create(@RequestBody @Valid Movimentacao movimentacao){
+        return repository.save(movimentacao);
+    }
+    
+    
+}
